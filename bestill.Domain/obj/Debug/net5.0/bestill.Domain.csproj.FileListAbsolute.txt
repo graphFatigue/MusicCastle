@@ -1,0 +1,12 @@
+C:\Users\Mary\source\repos\bestill\bestill.Domain\bin\Debug\net5.0\bestill.Domain.deps.json
+C:\Users\Mary\source\repos\bestill\bestill.Domain\bin\Debug\net5.0\bestill.Domain.dll
+C:\Users\Mary\source\repos\bestill\bestill.Domain\bin\Debug\net5.0\bestill.Domain.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.csproj.AssemblyReference.cache
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.AssemblyInfoInputs.cache
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.AssemblyInfo.cs
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.dll
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\refint\bestill.Domain.dll
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\bestill.Domain.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Domain\obj\Debug\net5.0\ref\bestill.Domain.dll

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\bestill.DAL\bestill.DAL.csproj" />
+    <ProjectReference Include="..\bestill.Domain\bestill.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

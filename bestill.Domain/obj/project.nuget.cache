@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "G/12g2eluAgeqeFpvLQWqAANvBuENJw/Bk/H25Rrk8v0dCzapMuV93+a6OdvvToaoDvTuyo88Ra3aLWNsM3Xng==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mary\\source\\repos\\bestill\\bestill.Domain\\bestill.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mary\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
+    "C:\\Users\\Mary\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Mary\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

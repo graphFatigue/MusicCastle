@@ -1,0 +1,17 @@
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.Service.deps.json
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.Service.dll
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.Service.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.DAL.dll
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.Domain.dll
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.DAL.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Service\bin\Debug\net5.0\bestill.Domain.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.csproj.AssemblyReference.cache
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.AssemblyInfoInputs.cache
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.AssemblyInfo.cs
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.csproj.CoreCompileInputs.cache
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.csproj.CopyComplete
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.dll
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\refint\bestill.Service.dll
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\bestill.Service.pdb
+C:\Users\Mary\source\repos\bestill\bestill.Service\obj\Debug\net5.0\ref\bestill.Service.dll
