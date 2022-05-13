@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace bestill.DAL.Interfaces
 {
-    public interface IBaseRepository<T> //where T : BaseEntity
+    public interface IBaseRepository<T>
     {
-        Task<bool> Create(T entity);
+        Task Create(T entity);
 
-        Task<T> Get(int id);
+        IQueryable<T> GetAll();
 
-        Task<List<T>> Select();
-
-        Task<bool> Delete(T entity);
+        Task Delete(T entity);
 
         Task<T> Update(T entity);
     }

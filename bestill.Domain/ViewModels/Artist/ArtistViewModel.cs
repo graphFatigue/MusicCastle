@@ -14,12 +14,13 @@ namespace bestill.Domain.ViewModels.Artist
             public string Name { get; set; }
             public string Description { get; set; }
             public IFormFile Avatar { get; set; }
-            //public List<Album> Albums { get; set; }
-            //public List<Song> Songs { get; set; }
+            public byte[]? Image { get; set; }
+        //public List<Album> Albums { get; set; }
+        //public List<Song> Songs { get; set; }
 
-            ////public List<Skill> Skills { get; set; }
+        ////public List<Skill> Skills { get; set; }
 
-            ////public List<Material> Materials { get; set; }
-            //public bool IsAvailable => Albums?.Count > 0;
+        ////public List<Material> Materials { get; set; }
+        //public bool IsAvailable => Albums?.Count > 0;
     }
 }

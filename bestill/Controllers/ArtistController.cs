@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using bestill.Domain.ViewModels.Artist;
+using System.IO;
 
 namespace bestill.Controllers
 {
@@ -21,14 +22,14 @@ namespace bestill.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetArtists()
+        public IActionResult GetArtists()
         {
-            var response = await _artistService.GetArtists();
+            var response =  _artistService.GetArtists();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
 
         //    private readonly IArtistService _artistService;
@@ -90,21 +91,29 @@ namespace bestill.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Save(ArtistViewModel model)
         {
+            ModelState.Remove("DateCreate");
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
                 {
-                    await _artistService.CreateArtist(model);
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    }
+                    await _artistService.Create(model, imageData);
                 }
                 else
                 {
                     await _artistService.Edit(model.Id, model);
                 }
+                return RedirectToAction("GetCars");
             }
-
-            return RedirectToAction("GetArtists");
+            return View();
         }
+
     }
     }

@@ -10,6 +10,7 @@ namespace bestill.Domain.Entity
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public byte[]? Avatar { get; set; }
         //public List<Album> Albums { get; set; }
         //public List<Song> Songs { get; set; }
 

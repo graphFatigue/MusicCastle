@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using bestill.Service.Interfaces;
 using bestill.Service.Implementations;
+using bestill.Domain.Entity;
 
 namespace bestill
 {
@@ -35,7 +36,7 @@ namespace bestill
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connection));
 
-            services.AddScoped<IArtistRepository, ArtistRepository>();
+            services.AddScoped<IBaseRepository<Artist>, ArtistRepository>();
             services.AddScoped<IArtistService, ArtistService>();
         }
 

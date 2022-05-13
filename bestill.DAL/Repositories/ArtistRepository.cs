@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace bestill.DAL.Repositories
 {
-    public class ArtistRepository: IArtistRepository
+    public class ArtistRepository: IBaseRepository<Artist>
     {
         private readonly ApplicationDbContext _db;
 
@@ -18,17 +18,15 @@ namespace bestill.DAL.Repositories
             _db = db;
         }
 
-        public async Task<bool> Create(Artist entity)
+        public async Task Create(Artist entity)
         {
             await _db.Artist.AddAsync(entity);
             await _db.SaveChangesAsync();
-
-            return true;
         }
 
-        public async Task<Artist> Get(int id)
+        public IQueryable<Artist> GetAll()
         {
-            return await _db.Artist.FirstOrDefaultAsync(x => x.Id == id);
+            return _db.Artist;
         }
 
         public async Task<List<Artist>> Select()
@@ -36,12 +34,10 @@ namespace bestill.DAL.Repositories
             return await _db.Artist.ToListAsync();
         }
 
-        public async Task<bool> Delete(Artist entity)
+        public async Task Delete(Artist entity)
         {
             _db.Artist.Remove(entity);
             await _db.SaveChangesAsync();
-
-            return true;
         }
 
         public async Task<Artist> Update(Artist entity)
@@ -52,9 +48,5 @@ namespace bestill.DAL.Repositories
             return entity;
         }
 
-        public async Task<Artist> GetByName(string name)
-        {
-            return await _db.Artist.FirstOrDefaultAsync(x => x.Name == name);
-        }
     }
 }

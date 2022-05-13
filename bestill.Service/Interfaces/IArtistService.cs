@@ -10,16 +10,15 @@ using System.Threading.Tasks;
 namespace bestill.Service.Interfaces
 {
     public interface IArtistService 
-    { 
-        Task<IBaseResponse<IEnumerable<Artist>>> GetArtists();
-        
-        Task<IBaseResponse<Artist>> GetArtist(int id);
+    {
+        IBaseResponse<List<Artist>> GetArtists();
 
-        Task<IBaseResponse<ArtistViewModel>> CreateArtist(ArtistViewModel artistViewModel);
+        Task<IBaseResponse<ArtistViewModel>> GetArtist(int id);
+
+        Task<IBaseResponse<Artist>> Create(ArtistViewModel model, byte[] imageData);
 
         Task<IBaseResponse<bool>> DeleteArtist(int id);
 
-        Task<IBaseResponse<Artist>> GetArtistByName(string name);
 
         Task<IBaseResponse<Artist>> Edit(int id, ArtistViewModel model);
     }
