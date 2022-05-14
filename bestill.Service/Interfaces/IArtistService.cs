@@ -15,7 +15,7 @@ namespace bestill.Service.Interfaces
 
         Task<IBaseResponse<ArtistViewModel>> GetArtist(int id);
 
-        Task<IBaseResponse<Artist>> Create(ArtistViewModel model, byte[] imageData);
+        Task<IBaseResponse<Artist>> Create(ArtistViewModel model);//, byte[] imageData);
 
         Task<IBaseResponse<bool>> DeleteArtist(int id);
 

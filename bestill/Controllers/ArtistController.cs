@@ -99,12 +99,12 @@ namespace bestill.Controllers
             {
                 if (model.Id == 0)
                 {
-                    byte[] imageData;
-                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
-                    }
-                    await _artistService.Create(model, imageData);
+                    //byte[] imageData;
+                    //using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    //{
+                    //    imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    //}
+                    await _artistService.Create(model);//, imageData);
                 }
                 else
                 {

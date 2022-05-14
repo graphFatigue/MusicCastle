@@ -1,5 +1,5 @@
-﻿@using bestill.Domain.Entity
-@model Artist
+﻿@using bestill.Domain.ViewModels.Artist
+@model ArtistViewModel
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
@@ -9,17 +9,12 @@
 <div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="https://images.wallpaperscraft.ru/image/single/mercedes_benz_s_class_w222_112850_800x600.jpg" 
+            <img src=@Model.Avatar 
                  class="img-fluid rounded-start rounded" alt="@Model?.Name">
         </div>
         <div class="col-md-4">
             <div class="card-body">
                 <h5 class="card-title text-center">@Model?.Name</h5>
-                <p class="card-text"><b>Описание: </b>@Model?.Description</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-body">
                 <p class="card-text"><b>Описание: </b>@Model?.Description</p>
             </div>
         </div>

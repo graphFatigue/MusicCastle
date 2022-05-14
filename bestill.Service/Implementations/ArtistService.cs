@@ -77,7 +77,7 @@ namespace bestill.Service.Implementations
                 {
                     Name = artist.Name,
                     Description = artist.Description,
-                    Image = artist.Avatar,
+                    Avatar = artist.Avatar,
                 };
 
                 return new BaseResponse<ArtistViewModel>()
@@ -96,7 +96,7 @@ namespace bestill.Service.Implementations
             }
         }  
         
-        public async Task<IBaseResponse<Artist>> Create(ArtistViewModel model, byte[] imageData)
+        public async Task<IBaseResponse<Artist>> Create(ArtistViewModel model)//, byte[] imageData)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace bestill.Service.Implementations
                 {
                     Name = model.Name,
                     Description = model.Description,
-                    Avatar = imageData
+                    Avatar = model.Avatar//imageData
                 };
                 await _artistRepository.Create(artist);
 

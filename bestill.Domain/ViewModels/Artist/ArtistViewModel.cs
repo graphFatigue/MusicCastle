@@ -13,8 +13,9 @@ namespace bestill.Domain.ViewModels.Artist
             public int Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
-            public IFormFile Avatar { get; set; }
-            public byte[]? Image { get; set; }
+            public string Avatar { get; set; }
+            //public IFormFile Avatar { get; set; }
+            //public byte[]? Image { get; set; }
         //public List<Album> Albums { get; set; }
         //public List<Song> Songs { get; set; }
 
