@@ -38,6 +38,8 @@ namespace bestill
 
             services.AddScoped<IBaseRepository<Artist>, ArtistRepository>();
             services.AddScoped<IArtistService, ArtistService>();
+            services.AddScoped<IBaseRepository<Album>, AlbumRepository>();
+            services.AddScoped<IAlbumService, AlbumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

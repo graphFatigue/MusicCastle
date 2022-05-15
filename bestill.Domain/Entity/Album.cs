@@ -10,18 +10,19 @@ namespace bestill.Domain.Entity
     {
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        //public string Description { get; set; }
         public int YearRelease { get; set; }
 
-        public string Author { get; set; }
+        //public string Author { get A; set; }
 
         public int AuthorId { get; set; }
+        public string Avatar { get; set; }
 
-        public List<Song> Songs { get; set; }
+        //public List<Song> Songs { get; set; }
 
         //public List<Material> Materials { get; set; }
 
-        public bool IsAvailable => Songs?.Count > 0;
+        //public bool IsAvailable => Songs?.Count > 0;
     }
 }
 

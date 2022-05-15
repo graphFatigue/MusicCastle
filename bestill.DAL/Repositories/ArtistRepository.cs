@@ -29,10 +29,10 @@ namespace bestill.DAL.Repositories
             return _db.Artist;
         }
 
-        public async Task<List<Artist>> Select()
-        {
-            return await _db.Artist.ToListAsync();
-        }
+        //public async Task<List<Artist>> Select()
+        //{
+        //    return await _db.Artist.ToListAsync();
+        //}
 
         public async Task Delete(Artist entity)
         {

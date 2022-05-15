@@ -18,5 +18,15 @@
                 <p class="card-text"><b>Описание: </b>@Model?.Description</p>
             </div>
         </div>
+                           <div class="card-body">
+                            <a asp-controller="Album" asp-action="GetAlbums" asp-route-authorId="@Model.Id" class="card-link">Перейти к альбомам</a>
+                            @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <hr/>
+                                <a asp-controller="Car" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Car" asp-action="Save" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
+                            }
+                        </div>
     </div>
 </div>

@@ -16,5 +16,6 @@ namespace bestill.DAL
         }
 
         public DbSet<Artist> Artist { get; set; }
+        public DbSet<Album> Album { get; set; }
     }
 }

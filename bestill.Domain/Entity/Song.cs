@@ -9,7 +9,7 @@ namespace bestill.Domain.Entity
     public class Song : BaseEntity
     {
         public string Title { get; set; }
-        public TimeSpan Length { get; set; }
-        public string Artist { get; set; }
+        public string Length { get; set; }//TimeSpan
+        //public string Artist { get; set; }
     }
 }

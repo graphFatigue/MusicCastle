@@ -110,7 +110,7 @@ namespace bestill.Controllers
                 {
                     await _artistService.Edit(model.Id, model);
                 }
-                return RedirectToAction("GetCars");
+                return RedirectToAction("GetArtists");
             }
             return View();
         }

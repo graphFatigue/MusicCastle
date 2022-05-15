@@ -114,6 +114,14 @@
         </div>
     </nav>
 </header>
+                    <form method = "get" class = "mb-3"> 
+        <div class = "input-group">
+            <input class = "form-control"> <asp-for = "searchTerm"> 
+                <div class = "input-group-append">
+                    <button type = "submit" class = "btn btn-primary"></button>
+                </div>
+        </div>
+        </form>
 <div class="container-fluid col-xl-12">
     <main role="main">
         @RenderBody()

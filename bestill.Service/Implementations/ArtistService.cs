@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Threading.Tasks;
 
 namespace bestill.Service.Implementations
 {
@@ -75,6 +74,7 @@ namespace bestill.Service.Implementations
 
                 var data = new ArtistViewModel()
                 {
+                    Id = id,
                     Name = artist.Name,
                     Description = artist.Description,
                     Avatar = artist.Avatar,
@@ -163,8 +163,8 @@ namespace bestill.Service.Implementations
         {
             try
             {
-                var car = await _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
-                if (car == null)
+                var album = await _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (album == null)
                 {
                     return new BaseResponse<Artist>()
                     {
@@ -173,15 +173,15 @@ namespace bestill.Service.Implementations
                     };
                 }
 
-                car.Description = model.Description;
-                car.Name = model.Name;
+                album.Description = model.Description;
+                album.Name = model.Name;
 
-                await _artistRepository.Update(car);
+                await _artistRepository.Update(album);
 
 
                 return new BaseResponse<Artist>()
                 {
-                    Data = car,
+                    Data = album,
                     StatusCode = StatusCode.OK,
                 };
                 // TypeCar
