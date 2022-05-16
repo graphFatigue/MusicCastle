@@ -39,19 +39,19 @@ namespace bestill.Controllers
         }
 
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id, int aId)
         {
             var response = await _albumService.DeleteAlbum(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetAlbums");
+                return RedirectToAction("GetAlbums", "Album", new { authorId = aId });
             }
             return RedirectToAction("Error");
         }
 
         [HttpGet]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Save(int id)
+        public async Task<IActionResult> Save(int id, int authorId)
         {
             if (id == 0)
             {
@@ -69,9 +69,10 @@ namespace bestill.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Save(AlbumViewModel model)
+        public async Task<IActionResult> Save(AlbumViewModel model, int authorId)
         {
             //ModelState.Remove("DateCreate");
+            model.AuthorId = authorId;
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
