@@ -440,3 +440,7 @@ C:\Users\Mary\source\repos\bestill\bestill\bin\Debug\net5.0\zh-Hant\Microsoft.Co
 C:\Users\Mary\source\repos\bestill\bestill\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Mary\source\repos\bestill\bestill\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\GetAlbums.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Artist\Delete.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Save.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\GetAlbum.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Delete.cshtml.g.cs

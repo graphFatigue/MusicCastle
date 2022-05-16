@@ -15,10 +15,11 @@
 <div class="card-buttons-group">
     <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
     <button class='btn btn-success' id='showCardsId'>Показать</button>
+    <a asp-controller="Album" asp-action="Save" asp-route-id="0" class="btn btn-primary">Добавить</a>
 </div>
 
 <div style="padding: 10px;"></div>
-    @Model = Model.OrderBy(o=>o.YearRelease).ToList();
+
     <div class="row">
         @foreach (var album in Model)
         {
@@ -29,6 +30,14 @@
                         <div class="card-body">
                             <h5 class="card-title">@album.Title</h5>
                             <p class="card-text">@album.YearRelease</p>
+                        </div>
+                                                <div class="card-body">
+                            <a asp-action="GetAlbum" asp-route-id="@album.Id" class="card-link">Перейти</a>
+                            
+
+                                <hr/>
+                                <a asp-controller="Album" asp-action="Delete" asp-route-id="@album.Id" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Album" asp-action="Save" asp-route-id="@album.Id" class="btn btn-primary">Изменить</a>
                         </div>
                     </div>
                 </div>

@@ -61,15 +61,15 @@ namespace bestill.Controllers
             return RedirectToAction("Error");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _artistService.DeleteArtist(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetArtist");
+                return RedirectToAction("GetArtists");
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.Description}");
         }
 
         [HttpGet]
@@ -94,7 +94,7 @@ namespace bestill.Controllers
 
         public async Task<IActionResult> Save(ArtistViewModel model)
         {
-            ModelState.Remove("DateCreate");
+           // ModelState.Remove("DateCreate");
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)

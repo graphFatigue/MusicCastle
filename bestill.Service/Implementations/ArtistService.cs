@@ -152,7 +152,7 @@ namespace bestill.Service.Implementations
             {
                 return new BaseResponse<bool>()
                 {
-                    Description = $"[DeleteCar] : {ex.Message}",
+                    Description = $"[DeleteArtist] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
@@ -163,8 +163,8 @@ namespace bestill.Service.Implementations
         {
             try
             {
-                var album = await _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
-                if (album == null)
+                var artist = await _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (artist == null)
                 {
                     return new BaseResponse<Artist>()
                     {
@@ -173,15 +173,16 @@ namespace bestill.Service.Implementations
                     };
                 }
 
-                album.Description = model.Description;
-                album.Name = model.Name;
+                artist.Description = model.Description;
+                artist.Name = model.Name;
+                artist.Avatar = model.Avatar;
 
-                await _artistRepository.Update(album);
+                await _artistRepository.Update(artist);
 
 
                 return new BaseResponse<Artist>()
                 {
-                    Data = album,
+                    Data = artist,
                     StatusCode = StatusCode.OK,
                 };
                 // TypeCar

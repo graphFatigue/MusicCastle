@@ -1,5 +1,5 @@
 ﻿
-@model bestill.Domain.ViewModels.Artist.ArtistViewModel
+@model bestill.Domain.ViewModels.Album.AlbumViewModel
 
 @{
         ViewBag.Title = "Добавление";
@@ -25,18 +25,20 @@
             <div class="card-body">
                 <form asp-action="Save" enctype="multipart/form-data">
                     <input asp-for="Id" hidden />
+                    <input asp-for="AuthorId" hidden />
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" type="text">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" type="text">
                     </div>
                     <div class="form-group">
-                        <label asp-for="Description"></label>
-                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <label asp-for="YearRelease"></label>
+                        <textarea asp-for="YearRelease" class="form-control"></textarea>
                     </div>
                     <div class="input-group mb-3">
                       <textarea asp-for="Avatar" class="form-control"></textarea>
                     </div>
+
                     <button class="btn btn-primary btn-lg float-right" type="submit">Отправить</button>
                 </form>
             </div>

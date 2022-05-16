@@ -15,6 +15,7 @@
 <div class="card-buttons-group">
     <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
     <button class='btn btn-success' id='showCardsId'>Показать</button>
+    <a asp-controller="Artist" asp-action="Save" asp-route-id="0" class="btn btn-primary">Добавить</a>
 </div>
 
 <div style="padding: 10px;"></div>
@@ -74,13 +75,11 @@ else
 
                         <div class="card-body">
                             <a asp-action="GetArtist" asp-route-id="@artist.Id" class="card-link">Перейти</a>
-                            @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
-                            @if (User.IsInRole("Admin"))
-                            {
+                            
+
                                 <hr/>
-                                <a asp-controller="Car" asp-action="Delete" asp-route-id="@artist.Id" class="btn btn-danger">Удалить</a>
-                                <a asp-controller="Car" asp-action="Save" asp-route-id="@artist.Id" class="btn btn-primary">Изменить</a>
-                            }
+                                <a asp-controller="Artist" asp-action="Delete" asp-route-id="@artist.Id" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Artist" asp-action="Save" asp-route-id="@artist.Id" class="btn btn-primary">Изменить</a>
                         </div>
                     </div>
                 </div>

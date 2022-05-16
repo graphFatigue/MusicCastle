@@ -44,7 +44,7 @@ namespace bestill.Controllers
             var response = await _albumService.DeleteAlbum(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetArtist");
+                return RedirectToAction("GetAlbums");
             }
             return RedirectToAction("Error");
         }
@@ -71,7 +71,7 @@ namespace bestill.Controllers
 
         public async Task<IActionResult> Save(AlbumViewModel model)
         {
-            ModelState.Remove("DateCreate");
+            //ModelState.Remove("DateCreate");
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
@@ -83,7 +83,7 @@ namespace bestill.Controllers
                 {
                     await _albumService.Edit(model.Id, model);
                 }
-                return RedirectToAction("GetAlbums");
+                return RedirectToAction("GetAlbums", "Album", new { authorId = model.AuthorId });
             }
             return View();
         }

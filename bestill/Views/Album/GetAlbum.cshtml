@@ -1,5 +1,5 @@
-﻿@using bestill.Domain.ViewModels.Artist
-@model ArtistViewModel
+﻿@using bestill.Domain.ViewModels.Album
+@model AlbumViewModel
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
@@ -10,20 +10,20 @@
     <div class="row g-0">
         <div class="col-md-4">
             <img src=@Model.Avatar 
-                 class="img-fluid rounded-start rounded" alt="@Model?.Name">
+                 class="img-fluid rounded-start rounded" alt="@Model?.Title">
         </div>
         <div class="col-md-4">
             <div class="card-body">
-                <h5 class="card-title text-center">@Model?.Name</h5>
-                <p class="card-text"><b>Описание: </b>@Model?.Description</p>
+                <h5 class="card-title text-center">@Model?.Title</h5>
+                <p class="card-text"><b>Год: </b>@Model?.YearRelease</p>
             </div>
         </div>
                            <div class="card-body">
                             <a asp-controller="Album" asp-action="GetAlbums" asp-route-authorId="@Model.Id" class="card-link">Перейти к альбомам</a>
                             @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
                                 <hr/>
-                                <a asp-controller="Artist" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
-                                <a asp-controller="Artist" asp-action="Save" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
+                                <a asp-controller="Album" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Album" asp-action="Save" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
                         </div>
     </div>
 </div>

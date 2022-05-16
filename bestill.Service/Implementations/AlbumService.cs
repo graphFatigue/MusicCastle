@@ -71,6 +71,8 @@ namespace bestill.Service.Implementations
 
                 var data = new AlbumViewModel()
                 {
+                    Id = id,
+                    AuthorId = album.AuthorId,
                     Title = album.Title,
                     YearRelease = album.YearRelease,
                     Avatar = album.Avatar,
@@ -100,7 +102,8 @@ namespace bestill.Service.Implementations
                 {
                     Title = model.Title,
                     YearRelease = model.YearRelease,
-                    Avatar = model.Avatar
+                    Avatar = model.Avatar,
+                    AuthorId = model.AuthorId
                 };
                 await _albumRepository.Create(album);
 
@@ -148,7 +151,7 @@ namespace bestill.Service.Implementations
             {
                 return new BaseResponse<bool>()
                 {
-                    Description = $"[DeleteCar] : {ex.Message}",
+                    Description = $"[DeleteAlbum] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError
                 };
             }
@@ -171,6 +174,8 @@ namespace bestill.Service.Implementations
 
                 album.Title = model.Title;
                 album.YearRelease = model.YearRelease;
+                album.Avatar = model.Avatar;
+                album.AuthorId = model.AuthorId;
 
                 await _albumRepository.Update(album);
 
