@@ -444,3 +444,5 @@ C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Artist\D
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Save.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\GetAlbum.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Delete.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\GetSongs.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\Save.cshtml.g.cs

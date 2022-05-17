@@ -19,7 +19,7 @@
             </div>
         </div>
                            <div class="card-body">
-                            <a asp-controller="Album" asp-action="GetAlbums" asp-route-authorId="@Model.Id" class="card-link">Перейти к альбомам</a>
+                            <a asp-controller="Song" asp-action="GetSongs" asp-route-albumId="@Model.Id" class="card-link">Перейти к песням</a>
                             @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
                                 <hr/>
                                 <a asp-controller="Album" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>

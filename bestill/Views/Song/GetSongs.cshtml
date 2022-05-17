@@ -1,0 +1,69 @@
+﻿@using bestill.Domain.Entity
+@model List<Song>
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<style>
+    .card-buttons-group {
+        text-align: right;
+        padding: 10px;
+    }
+</style>
+
+<div class="card-buttons-group">
+    <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
+    <button class='btn btn-success' id='showCardsId'>Показать</button>
+ <a asp-controller="Song" asp-action="Save" asp-route-id="0" asp-route-authorId="@Model.FirstOrDefault().AuthorId" asp-route-albumId="@Model.FirstOrDefault().AlbumId" class="btn btn-primary">Добавить</a>
+
+
+</div>
+
+<div style="padding: 10px;"></div>
+
+    <div class="row">
+        @foreach (var album in Model)
+        {
+            <div class="row row-cols-1 col-md-4 text-center">
+                <div class="col" style="padding: 10px;">
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <p>@album.Title</p>
+                        </div>
+                                                <div class="card-body">
+                        
+                           
+
+                                <hr/>
+                                <a asp-controller="Song" asp-action="Delete" asp-route-id="@album.Id" asp-route-alId="@album.AlbumId" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Song" asp-action="Save" asp-route-id="@album.Id" class="btn btn-primary">Изменить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>   
+
+@section pageScripts {
+    <script>
+        const hideCardElement = $('#hideCardsId');
+        const showCardElement = $('#showCardsId');
+        const cardElement = $('.card');
+        
+        const interval = 2000;
+        
+        hideCardElement.click(function(){
+            hideCardElement.hide(interval);
+            showCardElement.show(interval);
+            cardElement.hide(interval);
+        });
+        
+        showCardElement.click(function () {
+            hideCardElement.show(interval);
+            showCardElement.hide(interval);
+            cardElement.show(interval);
+        });
+    </script>
+}
