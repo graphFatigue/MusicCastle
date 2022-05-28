@@ -1,7 +1,9 @@
-﻿using bestill.Domain.ViewModels.Album;
+﻿using bestill.Domain.Entity;
+using bestill.Domain.ViewModels.Album;
 using bestill.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace bestill.Controllers
@@ -19,10 +21,17 @@ namespace bestill.Controllers
         public IActionResult GetAlbums(int authorId)
         {
             var response = _albumService.GetAlbums(authorId);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK&&response.Description == "Found 0 elements")
+            {
+                Album album = new Album( ){ AuthorId = authorId };
+                List<Album> albums = new List<Album> { album };
+                return View(albums);
+            }
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);
             }
+            
             return View("Error", $"{response.Description}");
         }
 
@@ -89,5 +98,22 @@ namespace bestill.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(AlbumViewModel model)
+        {
+            var response = _albumService.Search(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("SearchResult", response.Data);
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

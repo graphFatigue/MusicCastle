@@ -17,6 +17,7 @@ namespace bestill.Domain.Entity
 
         public int AuthorId { get; set; }
         public string Avatar { get; set; }
+        public string Genre { get; set; }
 
         //public List<Song> Songs { get; set; }
 

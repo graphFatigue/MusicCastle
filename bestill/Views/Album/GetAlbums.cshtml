@@ -1,4 +1,5 @@
 ﻿@using bestill.Domain.Entity
+
 @model List<Album>
 @{
     ViewBag.Title = "title";
@@ -19,6 +20,8 @@
 </div>
 
 <div style="padding: 10px;"></div>
+
+@if (Model.FirstOrDefault().Title is not null){
 
     <div class="row">
         @foreach (var album in Model)
@@ -44,7 +47,7 @@
             </div>
         }
     </div>   
-
+}
 @section pageScripts {
     <script>
         const hideCardElement = $('#hideCardsId');

@@ -5,13 +5,8 @@
 @model bestill.Domain.ViewModels.Artist.ArtistViewModel
 
 @{
-        ViewBag.Title = "Добавление";
-        Layout = "_Layout";
-}
-
-
-@{
-    var textTitle = Model?.Id == 0 ? "Изменение данных" : "Добавление данных";
+    ViewData["Title"] = "Search";
+    Layout = "_Layout";
 }
 
 @{
@@ -21,31 +16,25 @@
 
 }
 
-
+<h1>Search</h1>
 
 <div style="padding: 10px;"></div>
  <div class="col-md-12">
     <div class="card-body">
         <div class="card card-outline-secondary" style="background-color: white">
             <div class="card-header">
-                <h3 class="mb-0 text-center ParagraphHome">@textTitle</h3>
+                <h3 class="mb-0 text-center ParagraphHome">Поиск исполнителя</h3>
             </div>
             <div class="card-body">
-                <form asp-action="Save" enctype="multipart/form-data">
-                    <input asp-for="Id" hidden />
+                <form asp-action="Search" enctype="multipart/form-data">
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
-                        <label asp-for="Name" style="color:black"></label>
-                        <input asp-for="Name" class="form-control" type="text" id="validationServer01"  required>
-                        <span asp-validation-for="Name"></span>
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" id="validationServer01" type="text">
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Description" style="color:black"></label>
-                        <textarea asp-for="Description" class="form-control"></textarea>
-                    </div>
-                    <div class="col-md-3">
+                                         <div class="col-md-3">
                      <label for="validationDefault04" style="color:black" class="form-label">Страна</label>
-                        <select asp-for="Country" style="align-content" class="form-select" id="validationDefault04" required>
+                        <select asp-for="Country" style="align-content" class="form-select" id="validationDefault04">
                           <option selected disabled value="">Выберите...</option>
                             @foreach (var country in countryList)
                             {
@@ -55,23 +44,15 @@
                         </select>
                       </div>
 
-
-                    <div class="form-group">
-                        <label asp-for="Avatar" style="color:black"></label>
-                      <textarea asp-for="Avatar" class="form-control"></textarea>
-                    </div>
-                                   
+                <ul class="flex-inner">
                     <li>
                         <input asp-for="Group" type="checkbox">
                         <label asp-for="Group" style="color:black" >Групповой исполнитель</label>
                     </li>
-                    
-                    <button class="btn btn-primary btn-lg float-right" type="submit">Отправить</button>
+                    </ul>
+                    <button class="btn btn-primary btn-lg float-right" type="submit">Искать</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-

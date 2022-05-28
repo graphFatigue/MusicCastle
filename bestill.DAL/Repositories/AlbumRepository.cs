@@ -29,6 +29,7 @@ namespace bestill.DAL.Repositories
             return _db.Album;
         }
 
+
         public async Task Delete(Album entity)
     {
         _db.Album.Remove(entity);

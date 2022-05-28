@@ -76,6 +76,7 @@ namespace bestill.Service.Implementations
                     Title = album.Title,
                     YearRelease = album.YearRelease,
                     Avatar = album.Avatar,
+                    Genre = album.Genre,
                 };
 
                 return new BaseResponse<AlbumViewModel>()
@@ -103,7 +104,8 @@ namespace bestill.Service.Implementations
                     Title = model.Title,
                     YearRelease = model.YearRelease,
                     Avatar = model.Avatar,
-                    AuthorId = model.AuthorId
+                    AuthorId = model.AuthorId,
+                    Genre = model.Genre,
                 };
                 await _albumRepository.Create(album);
 
@@ -176,6 +178,7 @@ namespace bestill.Service.Implementations
                 album.YearRelease = model.YearRelease;
                 album.Avatar = model.Avatar;
                 album.AuthorId = model.AuthorId;
+                album.Genre = model.Genre;
 
                 await _albumRepository.Update(album);
 
@@ -198,7 +201,73 @@ namespace bestill.Service.Implementations
         }
 
 
+        public IBaseResponse<List<Album>> Search(AlbumViewModel model)
+        {
+            try
+            {
+                model.Genre = model?.Genre is null ? "" : model.Genre;
+                model.Title = model?.Title is null ? "" : model.Title;
+                var albums = _albumRepository.GetAll().ToList();
+                //albums = (List<Album>)albums.Where(p => p.Title.ToLower().Contains(model.Title.ToLower()) && p.Genre.Contains(model.Genre));
+                //IEnumerable<Album> selectedAlbums;
 
+               // if (model.YearRelease==0)
+                //{
+                string genre = model?.Genre?.ToString();
+                   var selectedAlbums = from p in albums
+                                        where p.Title.ToLower().Contains(model.Title.ToLower())&&p.Genre.Contains(model.Genre)
+                                         select p;
+               // }
+               // else 
+               // {
+                            //selectedAlbums = from p in albums
+                            //          where p.Title.Contains(model.Title) && p.Genre.Contains(model.Genre) && (p.YearRelease==model.YearRelease )//|| model.YearRelease == null)
+                            //          select p;
+                //}
+                //&&  
+
+                List<Album> albums1 = new List<Album>();
+
+                foreach (var album in selectedAlbums)
+                {
+                    if(album.Genre.Contains(model.Genre))
+                    {
+                        albums1.Add(album);
+                    }
+                }
+
+                //foreach (var album in selectedAlbums)
+                //{
+                //    albums1.Add(album);
+                //}
+
+
+                if (!albums1.Any())
+                {
+                    return new BaseResponse<List<Album>>()
+                    {
+                        Description = "Found 0 elements",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+
+                return new BaseResponse<List<Album>>()
+                {
+                    Data = albums1,
+                    StatusCode = StatusCode.OK
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<List<Album>>()
+                {
+                    Description = $"[GetArtists] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
 
 
 

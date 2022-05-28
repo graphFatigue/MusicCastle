@@ -9,10 +9,11 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using bestill.Domain.ViewModels.Artist;
 using System.IO;
+using System;
 
 namespace bestill.Controllers
 {
-    public class ArtistController: Controller
+    public class ArtistController : Controller
     {
         private readonly IArtistService _artistService;
 
@@ -24,7 +25,7 @@ namespace bestill.Controllers
         [HttpGet]
         public IActionResult GetArtists()
         {
-            var response =  _artistService.GetArtists();
+            var response = _artistService.GetArtists();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);
@@ -32,23 +33,6 @@ namespace bestill.Controllers
             return View("Error", $"{response.Description}");
         }
 
-        //    private readonly IArtistService _artistService;
-
-        //    public CarController(ICarService carService)
-        //    {
-        //        _artistService = carService;
-        //    }
-
-        //    [HttpGet]
-        //    public async Task<IActionResult> GetCars()
-        //    {
-        //        var response = await _artistService.GetCars();
-        //        if (response.StatusCode == Domain.Enum.StatusCode.OK)
-        //        {
-        //            return View(response.Data.ToList());
-        //        }
-        //        return RedirectToAction("Error");
-        //    }
 
         [HttpGet]
         public async Task<IActionResult> GetArtist(int id)
@@ -94,17 +78,11 @@ namespace bestill.Controllers
 
         public async Task<IActionResult> Save(ArtistViewModel model)
         {
-           // ModelState.Remove("DateCreate");
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
                 {
-                    //byte[] imageData;
-                    //using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
-                    //{
-                    //    imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
-                    //}
-                    await _artistService.Create(model);//, imageData);
+                    await _artistService.Create(model);
                 }
                 else
                 {
@@ -115,5 +93,23 @@ namespace bestill.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(ArtistViewModel model)
+        {
+            var response = _artistService.Search(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("SearchResult", response.Data);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+
     }
-    }
+}

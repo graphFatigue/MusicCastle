@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
+using bestill.Domain.Entity;
+using System.Collections.Generic;
 
 namespace bestill.Controllers
 {
@@ -18,9 +20,15 @@ namespace bestill.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSongs(int albumId)
+        public IActionResult GetSongs(int albumId, int authorId)
         {
             var response = _songService.GetSongs(albumId);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK && response.Description == "Found 0 elements")
+            {
+                Song song = new Song() { AuthorId = authorId, AlbumId = albumId };
+                List<Song> songs = new List<Song> { song };
+                return View(songs);
+            }
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);

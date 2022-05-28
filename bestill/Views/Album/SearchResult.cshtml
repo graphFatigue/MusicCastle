@@ -1,7 +1,8 @@
 ﻿@using bestill.Domain.Entity
-@model List<Song>
+
+@model List<Album>
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Search";
     Layout = "_Layout";
 }
 
@@ -15,14 +16,12 @@
 <div class="card-buttons-group">
     <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
     <button class='btn btn-success' id='showCardsId'>Показать</button>
- <a asp-controller="Song" asp-action="Save" asp-route-id="0" asp-route-authorId="@Model.FirstOrDefault().AuthorId" asp-route-albumId="@Model.FirstOrDefault().AlbumId" class="btn btn-primary">Добавить</a>
-
-
+    <a asp-controller="Album" asp-action="Save" asp-route-id="0" asp-route-authorId="@Model.FirstOrDefault().AuthorId" class="btn btn-primary">Добавить</a>
 </div>
 
-@if (Model.FirstOrDefault().Title is not null)
-{
-    <div style="padding: 10px;"></div>
+<div style="padding: 10px;"></div>
+
+@if (Model.FirstOrDefault().Title is not null){
 
     <div class="row">
         @foreach (var album in Model)
@@ -30,25 +29,25 @@
             <div class="row row-cols-1 col-md-4 text-center">
                 <div class="col" style="padding: 10px;">
                     <div class="card">
-
+                        <img src=@album.Avatar class="card-img-top" alt="@album.Title">
                         <div class="card-body">
-                            <p>@album.Title</p>
+                            <h5 class="card-title">@album.Title</h5>
+                            <p class="card-text">@album.YearRelease</p>
                         </div>
-                        <div class="card-body">
+                                                <div class="card-body">
+                            <a asp-action="GetAlbum" asp-route-id="@album.Id" class="card-link">Перейти</a>
+                            
 
-
-
-                            <hr/>
-                            <a asp-controller="Song" asp-action="Delete" asp-route-id="@album.Id" asp-route-alId="@album.AlbumId" class="btn btn-danger">Удалить</a>
-                            <a asp-controller="Song" asp-action="Save" asp-route-id="@album.Id" class="btn btn-primary">Изменить</a>
+                                <hr/>
+                                <a asp-controller="Album" asp-action="Delete" asp-route-id="@album.Id" asp-route-aId="@album.AuthorId" class="btn btn-danger">Удалить</a>
+                                <a asp-controller="Album" asp-action="Save" asp-route-id="@album.Id" class="btn btn-primary">Изменить</a>
                         </div>
                     </div>
                 </div>
             </div>
         }
-    </div>
-    }
-
+    </div>   
+}
 @section pageScripts {
     <script>
         const hideCardElement = $('#hideCardsId');

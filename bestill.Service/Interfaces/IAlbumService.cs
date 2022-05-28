@@ -19,7 +19,7 @@ namespace bestill.Service.Interfaces
 
         Task<IBaseResponse<bool>> DeleteAlbum(int id);
 
-
+        IBaseResponse<List<Album>> Search(AlbumViewModel model);
         Task<IBaseResponse<Album>> Edit(int id, AlbumViewModel model);
     }
 }
