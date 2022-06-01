@@ -18,8 +18,11 @@ namespace bestill.Service.Interfaces
         Task<IBaseResponse<Song>> Create(SongViewModel model);//, byte[] imageData);
 
         Task<IBaseResponse<bool>> DeleteSong(int id);
+        Task<IBaseResponse<Song>> AddToFavorite(int id);
+        Task<IBaseResponse<Song>> DeleteFromFavorite(int id);
 
 
         Task<IBaseResponse<Song>> Edit(int id, SongViewModel model);
+        IBaseResponse<List<Song>> GetFavoriteSongs();
     }
 }

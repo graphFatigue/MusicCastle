@@ -16,12 +16,11 @@
 <div class="card-buttons-group">
     <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
     <button class='btn btn-success' id='showCardsId'>Показать</button>
-    <a asp-controller="Album" asp-action="Save" asp-route-id="0" asp-route-authorId="@Model.FirstOrDefault().AuthorId" class="btn btn-primary">Добавить</a>
 </div>
 
 <div style="padding: 10px;"></div>
 
-@if (Model.FirstOrDefault().Title is not null){
+@if (Model is not null){
 
     <div class="row">
         @foreach (var album in Model)

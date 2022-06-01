@@ -100,5 +100,42 @@ namespace bestill.Controllers
             return View();
         }
 
+
+        public async Task<IActionResult> AddToFavorite(int id, int alId)
+        {
+            var response = await _songService.AddToFavorite(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("GetSongs", "Song", new { albumId = alId });
+            }
+            return RedirectToAction("Error");
+        }
+
+        public async Task<IActionResult> DeleteFromFavorite(int id, int alId)
+        {
+            var response = await _songService.DeleteFromFavorite(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("GetSongs", "Song", new { albumId = alId });
+            }
+            return RedirectToAction("Error");
+        }
+
+        [HttpGet]
+        public IActionResult FavoriteSongs()
+        {
+            var response = _songService.GetFavoriteSongs();
+            if (response.StatusCode == Domain.Enum.StatusCode.OK && response.Description == "Found 0 elements")
+            {
+                Song song = new Song() { };
+                List<Song> songs = new List<Song> {  };
+                return View(songs);
+            }
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Data);
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

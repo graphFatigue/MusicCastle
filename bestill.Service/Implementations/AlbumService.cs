@@ -208,38 +208,19 @@ namespace bestill.Service.Implementations
                 model.Genre = model?.Genre is null ? "" : model.Genre;
                 model.Title = model?.Title is null ? "" : model.Title;
                 var albums = _albumRepository.GetAll().ToList();
-                //albums = (List<Album>)albums.Where(p => p.Title.ToLower().Contains(model.Title.ToLower()) && p.Genre.Contains(model.Genre));
-                //IEnumerable<Album> selectedAlbums;
 
-               // if (model.YearRelease==0)
-                //{
                 string genre = model?.Genre?.ToString();
                    var selectedAlbums = from p in albums
-                                        where p.Title.ToLower().Contains(model.Title.ToLower())&&p.Genre.Contains(model.Genre)
+                                        where p.Title.ToLower().Contains(model.Title.ToLower())&&p.Genre.Contains(model.Genre)&& (p.YearRelease==model.YearRelease||model.YearRelease==0)
                                          select p;
-               // }
-               // else 
-               // {
-                            //selectedAlbums = from p in albums
-                            //          where p.Title.Contains(model.Title) && p.Genre.Contains(model.Genre) && (p.YearRelease==model.YearRelease )//|| model.YearRelease == null)
-                            //          select p;
-                //}
-                //&&  
 
                 List<Album> albums1 = new List<Album>();
 
                 foreach (var album in selectedAlbums)
                 {
-                    if(album.Genre.Contains(model.Genre))
-                    {
                         albums1.Add(album);
-                    }
+                    
                 }
-
-                //foreach (var album in selectedAlbums)
-                //{
-                //    albums1.Add(album);
-                //}
 
 
                 if (!albums1.Any())

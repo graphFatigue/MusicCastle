@@ -17,17 +17,6 @@ namespace bestill.Domain.ViewModels.Album
             public int AuthorId { get; set; }
             public string Avatar { get; set; }
             public string Genre { get; set; }
-        //public string Avatar { get; set; }
-
-
-        //public IFormFile Avatar { get; set; }
-        //public byte[]? Image { get; set; }
-        //public List<Album> Albums { get; set; }
-        //public List<Song> Songs { get; set; }
-
-        ////public List<Skill> Skills { get; set; }
-
-        ////public List<Material> Materials { get; set; }
-        //public bool IsAvailable => Albums?.Count > 0;
+      
     }
     }

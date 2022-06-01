@@ -27,106 +27,13 @@
                 <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 4a.5.5 0 0 0-.374.832l4 4.5a.5.5 0 0 0 .748 0l4-4.5A.5.5 0 0 0 12 6H4z" />
             </svg>
         </button>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle paragraphLayout active text-black" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family:'Comic Sans MS'; font-weight: bold;">
-                            Аккаунт
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="nav flex-column paragraphHome">
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link active text-white" asp-controller="Account" asp-action="Register">
-                                                    Регистрация
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link active text-white" asp-controller="Account" asp-action="Login">
-                                                    Вход
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>    
-                }
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle paragraphLayout active text-black" href="#" data-toggle="dropdown" style="font-family:'Comic Sans MS'; font-weight: bold;">
-                            Авто
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="nav flex-column paragraphHome">
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link active text-white" asp-controller="Car" asp-action="List">
-                                                    Список
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>   
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle paragraphLayout active text-black" href="#" data-toggle="dropdown" style="font-family:'Comic Sans MS'; font-weight: bold;">
-                            Админ
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="nav flex-column paragraphHome">
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link active text-white" asp-controller="Car" asp-action="Save">
-                                                    Добавление
-                                                </a>
-                                            </li>
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link active text-white" asp-controller="Admin" asp-action="Index">
-                                                    Пользователи
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>   
-                }
-            </ul>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                 <form method="post" asp-controller="Account" asp-action="Logout">
-                    <input class="btn btn-danger rounded" style="font-family:'Comic Sans MS'; font-weight: bold; font-size:20px;" type="submit" value="Выход" />
-                </form>
-            }
-        </div>
+        <a asp-controller="Song" asp-action="FavoriteSongs" class="btn btn-outline-info">Любимые песни</a>
+        <a asp-controller="Artist" asp-action="GetArtists" class="btn btn-outline-success">Перейти к исполнителям</a>
+        <a asp-controller="Artist" asp-action="Search" class="btn btn-outline-warning">Искать исполнителей</a>
+    <a asp-controller="Album" asp-action="Search" class="btn btn-outline-danger">Искать альбомы</a>
     </nav>
 </header>
-                    <form method = "get" class = "mb-3"> 
-        <div class = "input-group">
-            <input class = "form-control"> <asp-for = "searchTerm"> 
-                <div class = "input-group-append">
-                    <button type = "submit" class = "btn btn-primary"></button>
-                </div>
-        </div>
-        </form>
+
 <div class="container-fluid col-xl-12">
     <main role="main">
         @RenderBody()

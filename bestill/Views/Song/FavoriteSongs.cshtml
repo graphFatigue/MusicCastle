@@ -15,12 +15,12 @@
 <div class="card-buttons-group">
     <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
     <button class='btn btn-success' id='showCardsId'>Показать</button>
- <a asp-controller="Song" asp-action="Save" asp-route-id="0" asp-route-authorId="@Model.FirstOrDefault().AuthorId" asp-route-albumId="@Model.FirstOrDefault().AlbumId" class="btn btn-primary">Добавить</a>
+
 
 
 </div>
 
-@if (Model.FirstOrDefault().Title is not null)
+@if (Model.Count!=0)
 {
     <div style="padding: 10px;"></div>
 
@@ -32,16 +32,14 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h5 style="font-weight: bold">@album.Title</h5>
-                            <p class="card-text">@album.Length</p>
+                            <p>@album.Title</p>
                         </div>
                         <div class="card-body">
 
 
 
                             <hr/>
-                            <a asp-controller="Song" asp-action="Delete" asp-route-id="@album.Id" asp-route-alId="@album.AlbumId" class="btn btn-danger">Удалить</a>
-                            <a asp-controller="Song" asp-action="Save" asp-route-id="@album.Id" class="btn btn-primary">Изменить</a>
+                           
                             @if (!album.IsFavorite)
                             {
                                 <a asp-controller="Song" asp-action="AddToFavorite" asp-route-id="@album.Id"  asp-route-alId="@album.AlbumId" class="btn btn-success">В избранное</a>
@@ -56,7 +54,7 @@
             </div>
         }
     </div>
-    }
+}
 else
 {
     <div class="card col-md-12">
@@ -69,13 +67,14 @@ else
                 <div class="card-body">
                     <h5 class="card-title text-center">Список пуст :(</h5>
                     <p class="card-text">
-                        Список пополниться позже, не расстраивайтесь
+                        Список пополнится позже, не расстраивайтесь
                     </p>
                 </div>
             </div>
         </div>
     </div>
 }
+
 @section pageScripts {
     <script>
         const hideCardElement = $('#hideCardsId');

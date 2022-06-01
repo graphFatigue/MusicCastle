@@ -104,7 +104,8 @@ namespace bestill.Service.Implementations
                     Title = model.Title,
                     Length = model.Length,
                     AlbumId = model.AlbumId,
-                    AuthorId = model.AuthorId
+                    AuthorId = model.AuthorId,
+                    IsFavorite = false,
                 };
                 await _songRepository.Create(song);
 
@@ -168,7 +169,7 @@ namespace bestill.Service.Implementations
                 {
                     return new BaseResponse<Song>()
                     {
-                        Description = "Album not found",
+                        Description = "Song not found",
                         StatusCode = StatusCode.ArtistNotFound
                     };
                 }
@@ -177,6 +178,7 @@ namespace bestill.Service.Implementations
                 song.Length = model.Length;
                 song.AlbumId = model.AlbumId;
                 song.AuthorId = model.AuthorId;
+                song.IsFavorite = model.IsFavorite;
 
                 await _songRepository.Update(song);
 
@@ -200,8 +202,112 @@ namespace bestill.Service.Implementations
 
 
 
+        public async Task<IBaseResponse<Song>> AddToFavorite(int id)
+        {
+            try
+            {
+                var song = await _songRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (song == null)
+                {
+                    return new BaseResponse<Song>()
+                    {
+                        Description = "Song not found",
+                        StatusCode = StatusCode.ArtistNotFound
+                    };
+                }
+
+                song.IsFavorite = true;
+
+                await _songRepository.Update(song);
 
 
+                return new BaseResponse<Song>()
+                {
+                    Data = song,
+                    StatusCode = StatusCode.OK,
+                };
 
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Song>()
+                {
+                    Description = $"[Edit] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<Song>> DeleteFromFavorite(int id)
+        {
+            try
+            {
+                var song = await _songRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (song == null)
+                {
+                    return new BaseResponse<Song>()
+                    {
+                        Description = "Song not found",
+                        StatusCode = StatusCode.ArtistNotFound
+                    };
+                }
+
+                song.IsFavorite = false;
+
+                await _songRepository.Update(song);
+
+
+                return new BaseResponse<Song>()
+                {
+                    Data = song,
+                    StatusCode = StatusCode.OK,
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Song>()
+                {
+                    Description = $"[Edit] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+
+        public IBaseResponse<List<Song>> GetFavoriteSongs()
+        {
+            try
+            {
+                var songs = _songRepository.GetAll().ToList();//.Where(x => x.AuthorId == authorId);//AllAsync();//;
+                songs = songs.Where(x => x.IsFavorite).ToList();
+                if (!songs.Any())
+                {
+                    return new BaseResponse<List<Song>>()
+                    {
+                        Description = "Found 0 elements",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+
+                return new BaseResponse<List<Song>>()
+                {
+                    Data = (List<Song>)songs,
+                    StatusCode = StatusCode.OK
+                };
+            }
+
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<List<Song>>()
+                {
+                    Description = $"[GetSongs] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
     }
 }
+
+    
