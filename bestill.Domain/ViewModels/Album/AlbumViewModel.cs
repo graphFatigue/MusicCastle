@@ -17,6 +17,6 @@ namespace bestill.Domain.ViewModels.Album
             public int AuthorId { get; set; }
             public string Avatar { get; set; }
             public string Genre { get; set; }
-      
+            public string ArtistName { get; set; }
     }
     }

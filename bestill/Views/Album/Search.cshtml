@@ -8,7 +8,7 @@
 
 
 @{
-    var textTitle = Model?.Id == 0 ? "Изменение данных" : "Добавление данных";
+    var textTitle = "Поиск альбома";
 }
 
 @{
@@ -29,17 +29,17 @@
                     <input asp-for="AuthorId" hidden />
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
-                        <label asp-for="Title" style="color:black">Title</label>
+                        <label asp-for="Title" style="color:black">Название альбома</label>
                         <input asp-for="Title" class="form-control"  type="text" placeholder="Введите название альбома..." >
                         <span asp-validation-for="Title"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="YearRelease" style="color:black">Year Release</label>
+                        <label asp-for="YearRelease" style="color:black">Год выхода альбома</label>
                         <input asp-for="YearRelease" class="form-control" type="text" placeholder="Введите год выхода альбома...">
                         <span asp-validation-for="YearRelease"></span>
                     </div>
                      <div class="col-md-3">
-                     <label for="validationDefault04" class="form-label">Жанр</label>
+                     <label for="validationDefault04" class="form-label" style="color:black">Жанр</label>
                         <select asp-for="Genre" style="align-content" class="form-select" >
                           <option selected disabled value="">Выберите...</option>
                             @foreach (var genre in genres)

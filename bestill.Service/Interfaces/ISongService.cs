@@ -23,6 +23,7 @@ namespace bestill.Service.Interfaces
 
 
         Task<IBaseResponse<Song>> Edit(int id, SongViewModel model);
-        IBaseResponse<List<Song>> GetFavoriteSongs();
+        IBaseResponse<List<SongViewModel>> GetFavoriteSongs();
+        IBaseResponse<List<SongViewModel>> Search(SongViewModel model);
     }
 }

@@ -451,3 +451,5 @@ C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Artist\S
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Search.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\SearchResult.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\FavoriteSongs.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\Search.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\SearchResult.cshtml.g.cs

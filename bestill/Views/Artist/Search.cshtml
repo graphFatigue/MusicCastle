@@ -16,7 +16,6 @@
 
 }
 
-<h1>Search</h1>
 
 <div style="padding: 10px;"></div>
  <div class="col-md-12">
@@ -29,8 +28,8 @@
                 <form asp-action="Search" enctype="multipart/form-data">
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" id="validationServer01" type="text">
+                        <label asp-for="Name" style="color:black">Имя исполнителя</label>
+                        <input asp-for="Name" class="form-control" id="validationServer01" type="text" placeholder="Введите имя исполнителя...">
                     </div>
                                          <div class="col-md-3">
                      <label for="validationDefault04" style="color:black" class="form-label">Страна</label>

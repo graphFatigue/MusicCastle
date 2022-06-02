@@ -30,13 +30,14 @@
                     <input asp-for="IsFavorite" hidden />
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
-                        <label asp-for="Title"></label>
-                        <input asp-for="Title" class="form-control" type="text" required>
+                        <label asp-for="Title" style="color:black">Название песни</label>
+                        <input asp-for="Title" class="form-control" placeholder="Введите название песни..." type="text" required>
                         <span asp-validation-for="Title"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Length"></label>
-                        <textarea asp-for="Length" class="form-control" required></textarea>
+                        <label asp-for="Length" style="color:black">Длительность песни</label>
+                        <input asp-for="Length" class="form-control" placeholder="Введите длительности песни в формате '00:00'..." required>
+                        <span asp-validation-for="Length"></span>
                     </div>
 
                     <button class="btn btn-primary btn-lg float-right" type="submit">Отправить</button>

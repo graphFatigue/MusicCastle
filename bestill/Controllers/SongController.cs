@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System;
 using bestill.Domain.Entity;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace bestill.Controllers
 {
@@ -81,7 +82,6 @@ namespace bestill.Controllers
 
         public async Task<IActionResult> Save(SongViewModel model, int albumId, int authorId)
         {
-            //ModelState.Remove("DateCreate");
             model.AuthorId = authorId;
             model.AlbumId = albumId;
             if (ModelState.IsValid)
@@ -89,7 +89,7 @@ namespace bestill.Controllers
                 if (model.Id == 0)
                 {
 
-                    await _songService.Create(model);//, imageData);
+                    await _songService.Create(model);
                 }
                 else
                 {
@@ -104,6 +104,7 @@ namespace bestill.Controllers
         public async Task<IActionResult> AddToFavorite(int id, int alId)
         {
             var response = await _songService.AddToFavorite(id);
+            //string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return RedirectToAction("GetSongs", "Song", new { albumId = alId });
@@ -127,8 +128,8 @@ namespace bestill.Controllers
             var response = _songService.GetFavoriteSongs();
             if (response.StatusCode == Domain.Enum.StatusCode.OK && response.Description == "Found 0 elements")
             {
-                Song song = new Song() { };
-                List<Song> songs = new List<Song> {  };
+                SongViewModel song = new SongViewModel() { };
+                List<SongViewModel> songs = new List<SongViewModel> {  };
                 return View(songs);
             }
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
@@ -137,5 +138,22 @@ namespace bestill.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(SongViewModel model)
+        {
+            var response = _songService.Search(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("SearchResult", response.Data);
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
-}
+}   

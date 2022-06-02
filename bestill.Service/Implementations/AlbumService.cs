@@ -16,10 +16,12 @@ namespace bestill.Service.Implementations
     public class AlbumService : IAlbumService
     {
         private readonly IBaseRepository<Album> _albumRepository;
+        private readonly IBaseRepository<Artist> _artistRepository;
 
-        public AlbumService(IBaseRepository<Album> albumRepository)
+        public AlbumService(IBaseRepository<Album> albumRepository, IBaseRepository<Artist> artistRepository)
         {
             _albumRepository = albumRepository;
+            _artistRepository = artistRepository;
         }
 
         public IBaseResponse<List<Album>> GetAlbums(int authorId)
@@ -37,6 +39,7 @@ namespace bestill.Service.Implementations
                     };
                 }
 
+                albums = albums.OrderByDescending(o => o.YearRelease).ToList();
                 return new BaseResponse<List<Album>>()
                 {
                     Data = (List<Album>)albums,

@@ -17,10 +17,12 @@ namespace bestill.Service.Implementations
     public class SongService : ISongService
     {
         private readonly IBaseRepository<Song> _songRepository;
+        private readonly IBaseRepository<Artist> _artistRepository;
 
-        public SongService(IBaseRepository<Song> songRepository)
+        public SongService(IBaseRepository<Song> songRepository, IBaseRepository<Artist> artistRepository)
         {
             _songRepository = songRepository;
+            _artistRepository = artistRepository;
         }
 
         public IBaseResponse<List<Song>> GetSongs(int albumId)
@@ -29,6 +31,7 @@ namespace bestill.Service.Implementations
             {
                 var songs = _songRepository.GetAll().ToList();//.Where(x => x.AuthorId == authorId);//AllAsync();//;
                 songs = songs.Where(x => x.AlbumId == albumId).ToList();
+                
                 if (!songs.Any())
                 {
                     return new BaseResponse<List<Song>>()
@@ -37,6 +40,7 @@ namespace bestill.Service.Implementations
                         StatusCode = StatusCode.OK
                     };
                 }
+
 
                 return new BaseResponse<List<Song>>()
                 {
@@ -61,6 +65,7 @@ namespace bestill.Service.Implementations
             try
             {
                 var song = await _songRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+
                 if (song == null)
                 {
                     return new BaseResponse<SongViewModel>()
@@ -77,6 +82,7 @@ namespace bestill.Service.Implementations
                     Title = song.Title,
                     AlbumId = song.AlbumId,
                     Length = song.Length,
+                    
                 };
 
                 return new BaseResponse<SongViewModel>()
@@ -275,24 +281,40 @@ namespace bestill.Service.Implementations
         }
 
 
-        public IBaseResponse<List<Song>> GetFavoriteSongs()
+        public IBaseResponse<List<SongViewModel>> GetFavoriteSongs()
         {
             try
             {
                 var songs = _songRepository.GetAll().ToList();//.Where(x => x.AuthorId == authorId);//AllAsync();//;
-                songs = songs.Where(x => x.IsFavorite).ToList();
+                songs = songs.Where(x => x.IsFavorite).ToList();//songs.Count
+                List<SongViewModel> viewModel = new List<SongViewModel>();
+                foreach (var song in songs)
+                {
+                    var artist = _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == song.AuthorId);
+
+                    viewModel.Add(new SongViewModel()
+                    {
+                        Id = song.Id,
+                        Title = song.Title,
+                        AlbumId = song.AlbumId,
+                        AuthorId = song.AuthorId,
+                        IsFavorite = song.IsFavorite,
+                        Length = song.Length,
+                        ArtistName = artist.Result.Name
+                    }) ;
+                }
                 if (!songs.Any())
                 {
-                    return new BaseResponse<List<Song>>()
+                    return new BaseResponse<List<SongViewModel>>()
                     {
                         Description = "Found 0 elements",
                         StatusCode = StatusCode.OK
                     };
                 }
 
-                return new BaseResponse<List<Song>>()
+                return new BaseResponse<List<SongViewModel>>()
                 {
-                    Data = (List<Song>)songs,
+                    Data = (List<SongViewModel>)viewModel,
                     StatusCode = StatusCode.OK
                 };
             }
@@ -300,7 +322,88 @@ namespace bestill.Service.Implementations
             catch (Exception ex)
             {
 
-                return new BaseResponse<List<Song>>()
+                return new BaseResponse<List<SongViewModel>>()
+                {
+                    Description = $"[GetSongs] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+
+
+        public IBaseResponse<List<SongViewModel>> Search(SongViewModel model)
+        {
+            try
+            {
+                model.Title = model?.Title is null ? "" : model.Title;
+                model.ArtistName = model?.ArtistName is null ? "" : model.ArtistName;
+                var songs = _songRepository.GetAll().ToList();
+                IEnumerable<Song> selectedArtists = new List<Song>();
+                if (model.ArtistName != "")
+                {
+                var artistEntity = _artistRepository.GetAll().Where(x => x.Name.ToLower().Contains(model.ArtistName.ToLower()));
+                int[] artistId = new int[artistEntity.Count()];
+                int i = 0;
+                foreach (var artist in artistEntity)
+                {
+                    artistId[i] = artist.Id;
+                    i++;
+                }
+                if (artistId.Length > 0)
+                    {
+                    selectedArtists = from p in songs
+                                      where p.Title.ToLower().Contains(model.Title.ToLower()) && artistId.Contains(p.AuthorId)
+                                      select p;
+                    }
+                    
+                }
+                else
+                {
+                        selectedArtists = from p in songs
+                                      where p.Title.ToLower().Contains(model.Title.ToLower())
+                                      select p;
+                }
+                
+
+                List<SongViewModel> viewModel = new List<SongViewModel>();
+                foreach (var song in selectedArtists)
+                {
+                    var artist = _artistRepository.GetAll().FirstOrDefaultAsync(x => x.Id == song.AuthorId);
+
+                    viewModel.Add(new SongViewModel()
+                    {
+                        Id = song.Id,
+                        Title = song.Title,
+                        AlbumId = song.AlbumId,
+                        AuthorId = song.AuthorId,
+                        IsFavorite = song.IsFavorite,
+                        Length = song.Length,
+                        ArtistName = artist.Result.Name
+                    });
+                }
+
+
+                if (!viewModel.Any())
+                {
+                    return new BaseResponse<List<SongViewModel>>()
+                    {
+                        Description = "Found 0 elements",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+
+                return new BaseResponse<List<SongViewModel>>()
+                {
+                    Data = viewModel,
+                    StatusCode = StatusCode.OK
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<List<SongViewModel>>()
                 {
                     Description = $"[GetSongs] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError

@@ -1,0 +1,37 @@
+﻿@using System;
+@using System.Collections;
+@using System.Globalization;
+@using bestill.Domain.Entity;
+@model bestill.Domain.ViewModels.Song.SongViewModel
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_Layout";
+}
+
+
+
+<div style="padding: 10px;"></div>
+ <div class="col-md-12">
+    <div class="card-body">
+        <div class="card card-outline-secondary" style="background-color: white">
+            <div class="card-header">
+                <h3 class="mb-0 text-center ParagraphHome">Поиск исполнителя</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Search" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" style="color:black">Название песни</label>
+                        <input asp-for="Title" class="form-control" id="validationServer01" type="text" placeholder="Введите название песни...">
+                    </div>
+                   <div class="form-group">
+                        <label asp-for="ArtistName" style="color:black">Имя исполнителя</label>
+                        <input asp-for="ArtistName" class="form-control" id="validationServer01" type="text" placeholder="Введите имя исполнителя...">
+                    </div>
+                    <button class="btn btn-primary btn-lg float-right" type="submit">Искать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
