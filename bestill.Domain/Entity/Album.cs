@@ -19,11 +19,7 @@ namespace bestill.Domain.Entity
         public string Avatar { get; set; }
         public string Genre { get; set; }
 
-        //public List<Song> Songs { get; set; }
 
-        //public List<Material> Materials { get; set; }
-
-        //public bool IsAvailable => Songs?.Count > 0;
     }
 }
 

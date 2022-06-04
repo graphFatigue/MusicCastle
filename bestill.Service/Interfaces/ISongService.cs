@@ -20,10 +20,9 @@ namespace bestill.Service.Interfaces
         Task<IBaseResponse<bool>> DeleteSong(int id);
         Task<IBaseResponse<Song>> AddToFavorite(int id);
         Task<IBaseResponse<Song>> DeleteFromFavorite(int id);
-
-
         Task<IBaseResponse<Song>> Edit(int id, SongViewModel model);
         IBaseResponse<List<SongViewModel>> GetFavoriteSongs();
         IBaseResponse<List<SongViewModel>> Search(SongViewModel model);
+        IBaseResponse<List<Album>> AlbumsIncludeSong(SongViewModel model);
     }
 }

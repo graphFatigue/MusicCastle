@@ -155,5 +155,22 @@ namespace bestill.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AlbumsIncludeSong()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AlbumsIncludeSong(SongViewModel model)
+        {
+            var response = _songService.AlbumsIncludeSong(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("GetAlbums", response.Data);
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }   

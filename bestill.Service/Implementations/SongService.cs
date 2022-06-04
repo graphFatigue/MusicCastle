@@ -18,11 +18,13 @@ namespace bestill.Service.Implementations
     {
         private readonly IBaseRepository<Song> _songRepository;
         private readonly IBaseRepository<Artist> _artistRepository;
+        private readonly IBaseRepository<Album> _albumRepository;
 
-        public SongService(IBaseRepository<Song> songRepository, IBaseRepository<Artist> artistRepository)
+        public SongService(IBaseRepository<Song> songRepository, IBaseRepository<Artist> artistRepository, IBaseRepository<Album> albumRepository)
         {
             _songRepository = songRepository;
             _artistRepository = artistRepository;
+            _albumRepository = albumRepository;
         }
 
         public IBaseResponse<List<Song>> GetSongs(int albumId)
@@ -184,7 +186,6 @@ namespace bestill.Service.Implementations
                 song.Length = model.Length;
                 song.AlbumId = model.AlbumId;
                 song.AuthorId = model.AuthorId;
-                song.IsFavorite = model.IsFavorite;
 
                 await _songRepository.Update(song);
 
@@ -194,7 +195,6 @@ namespace bestill.Service.Implementations
                     Data = song,
                     StatusCode = StatusCode.OK,
                 };
-                // TypeCar
             }
             catch (Exception ex)
             {
@@ -404,6 +404,52 @@ namespace bestill.Service.Implementations
             {
 
                 return new BaseResponse<List<SongViewModel>>()
+                {
+                    Description = $"[GetSongs] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+
+
+        public IBaseResponse<List<Album>> AlbumsIncludeSong(SongViewModel model)
+        {
+            try
+            {
+                var songs = _songRepository.GetAll().ToList();//.Where(x => x.AuthorId == authorId);//AllAsync();//;
+                songs = songs.Where(x => x.Title.ToLower().Contains(model.Title.ToLower())).ToList();//songs.Count
+                int[] indexes = new int[] {};
+                foreach (var song in songs)
+                {
+                    if (!indexes.Contains(song.AlbumId))
+                    {
+                        Array.Resize(ref indexes, indexes.Length+1);
+                        indexes[indexes.Length-1] = song.AlbumId;
+                    }
+                }
+                var albums = _albumRepository.GetAll().ToList().Where(x=>indexes.Contains(x.Id)).ToList();
+               
+                if (!albums.Any())
+                {
+                    return new BaseResponse<List<Album>>()
+                    {
+                        Description = "Found 0 elements",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+
+                return new BaseResponse<List<Album>>()
+                {
+                    Data = (List<Album>)albums,
+                    StatusCode = StatusCode.OK
+                };
+            }
+
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<List<Album>>()
                 {
                     Description = $"[GetSongs] : {ex.Message}",
                     StatusCode = StatusCode.InternalServerError

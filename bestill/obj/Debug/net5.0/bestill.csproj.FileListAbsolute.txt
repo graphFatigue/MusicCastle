@@ -453,3 +453,5 @@ C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Album\Se
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\FavoriteSongs.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\Search.cshtml.g.cs
 C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\SearchResult.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\AlbumsIncludeSong.cshtml.g.cs
+C:\Users\Mary\source\repos\bestill\bestill\obj\Debug\net5.0\Razor\Views\Song\GetAlbums.cshtml.g.cs

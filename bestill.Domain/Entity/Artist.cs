@@ -13,13 +13,7 @@ namespace bestill.Domain.Entity
         public string Country { get; set; }
         public bool Group { get; set; }
         public string Avatar { get; set; }
-        //public List<Album> Albums { get; set; }
-        //public List<Song> Songs { get; set; }
-
-        ////public List<Skill> Skills { get; set; }
-
-        ////public List<Material> Materials { get; set; }
-        //public bool IsAvailable => Albums?.Count > 0;
+       
     }
 }
 
