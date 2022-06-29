@@ -12,7 +12,7 @@ namespace bestill.Domain.ViewModels.Song
         public int Id { get; set; }
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 50 символов")]
         public string Title { get; set; }
-        [RegularExpression("[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}")]
+        [RegularExpression("[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}", ErrorMessage = "Введите длительности песни в формате '00:00'") ]
         public string Length { get; set; }//TimeSpan
         public int AuthorId { get; set; }
         public int AlbumId { get; set; }

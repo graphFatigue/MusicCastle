@@ -13,6 +13,5 @@ namespace bestill.Domain.Entity
         public int AuthorId { get; set; }
         public int AlbumId { get; set; }
         public bool IsFavorite { get; set; }
-        //public string Artist { get; set; }
     }
 }

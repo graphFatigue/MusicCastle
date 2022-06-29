@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="bestill.Domain.Entity.Album">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAYAAAAAAAAAAAAAABAAAAAAIAA=</HashCode>
+      <FileName>Entity\Album.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bestill.Domain.Entity.BaseEntity">
+    <Position X="4.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bestill.Domain.Entity.Artist">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAgAAAAAAQAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Artist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bestill.Domain.Entity.Song">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAEAAAAAAAABAgAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Entity\Song.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

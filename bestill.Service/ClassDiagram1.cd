@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="bestill.Service.Implementations.AlbumService">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAkAEACAAAAAIAgAAA=</HashCode>
+      <FileName>Implementations\AlbumService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="bestill.Service.Implementations.ArtistService">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAQACAAAAEAEACAAAAAAAgAAA=</HashCode>
+      <FileName>Implementations\ArtistService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="bestill.Service.Implementations.SongService">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAACAACAAAAAAAAAAAAAAAAAUAEAEICAABAAAAgAAA=</HashCode>
+      <FileName>Implementations\SongService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="bestill.Service.Interfaces.IAlbumService">
+    <Position X="1" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAEACAAAAAIAgAAA=</HashCode>
+      <FileName>Interfaces\IAlbumService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

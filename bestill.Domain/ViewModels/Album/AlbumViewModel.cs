@@ -12,7 +12,7 @@ namespace bestill.Domain.ViewModels.Album
             public int Id { get; set; }
             [StringLength(50, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 50 символов")]
             public string Title { get; set; }
-            [Range(1930, 2022, ErrorMessage = "Недопустимый год")]
+            [Range(1930, 2022, ErrorMessage = "Недопустимый год. Введите значение от 1500 до 2025")]
             public int YearRelease { get; set; }
             public int AuthorId { get; set; }
             public string Avatar { get; set; }
